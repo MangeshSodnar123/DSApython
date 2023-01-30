@@ -67,7 +67,12 @@ def deleteNode(rootNode,nodeValue):
         rootNode.leftChild = deleteNode(rootNode.leftChild,ipre.data)
     
     return rootNode
-    
+
+def deleteBST(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "successfully delete."
         
 bst = BSTNode(None)
 insertNode(bst,90)

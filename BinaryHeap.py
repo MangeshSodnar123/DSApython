@@ -51,5 +51,15 @@ def insertNode(rootNode,nodeValue,heapType):
 
 
 heap = Heap(5)
-print(sizeOfHeap(heap))
-insertNode(heap,3,"Max")
+#print(sizeOfHeap(heap))
+'''insertNode(heap,3,"Max")
+insertNode(heap,2,"Max")
+insertNode(heap,4,"Max")
+insertNode(heap,5,"Max")
+insertNode(heap,1,"Max")'''
+insertNode(heap,3,"Min")
+insertNode(heap,2,"Min")
+insertNode(heap,4,"Min")
+insertNode(heap,5,"Min")
+insertNode(heap,1,"Min")
+levelOrderTraversal(heap)

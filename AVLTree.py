@@ -86,6 +86,11 @@ def leftRotate(disbalancedNode):
 
     return newRoot
     
+def getBalance(rootNode):
+    if not rootNode:
+        return
+    return getHeight(rootNode.leftChilf) - getHeight(rootNode.rightChild)
+
 
 
 avl = AVLNode(50)

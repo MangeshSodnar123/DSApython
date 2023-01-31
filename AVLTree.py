@@ -159,7 +159,11 @@ def deleteNode(rootNode,nodeValue):
         return leftRotate(rootNode.leftChild)
     return rootNode
     
-def deleteAVL
+def deleteAVL(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return " the avl tree has been deleted successfully."
 
 newAVL = AVLNode(30)
 newAVL = insertNode(newAVL, 25)
@@ -176,4 +180,5 @@ preOrderTraversal(newAVL)
 print("-----------")
 deleteNode(newAVL,25)
 preOrderTraversal(newAVL)
-
+print(deleteAVL(newAVL))
+preOrderTraversal(newAVL)

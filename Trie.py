@@ -12,9 +12,9 @@ class Trie:
         for letter in word:
             node = current.children.get(letter)
             if node == None:
-                newNode = TrieNode()
-                current.children.update({letter:newNode})
-            current = newNode
+                node = TrieNode()
+                current.children.update({letter:node})
+            current = node
         current.endOfString = True
         print("Successfully inserted")
     
@@ -32,9 +32,11 @@ class Trie:
             return False
             
 def deleteString(root,word,index):
+    
     ch = word[index]
-    currentNo = root.children.get(ch)
+    currentNode = root.children.get(ch)
     canThisStringBeDeleted = False
+    
     if len(currentNode.children) > 1:
         deleteString(currentNode,word,index+1)
         return False
@@ -43,7 +45,7 @@ def deleteString(root,word,index):
         if len(currentNode.children) >=1:
             currentNode.endOfString = False
         else:
-            currentNode.children.pop(ch)
+            root.children.pop(ch)
             return True
     
     if currentNode.endOfString == True:
@@ -58,7 +60,42 @@ def deleteString(root,word,index):
     else:
         return False
     
+    '''
+    ch = word[index]
+    currentNode = root.children.get(ch)
+    canThisNodeBeDeleted = False
+    
+    if len(currentNode.children) > 1:
+        deleteString(currentNode, word, index+1)
+        return False
+    
+    if index == len(word) - 1:
+        if len(currentNode.children) >= 1:
+            currentNode.endOfString = False
+            return False
+        else:
+            root.children.pop(ch)
+            return True
+    
+    if currentNode.endOfString == True:
+        deleteString(currentNode, word, index+1)
+        return False
+
+    canThisNodeBeDeleted = deleteString(currentNode, word, index+1)
+    if canThisNodeBeDeleted == True:
+        root.children.pop(ch)
+        return True
+    else:
+        return False
+    '''
+    
     
 trie = Trie()
 print(trie.insertString("mango"))
-print(trie.searchString("mangoe"))
+print(trie.insertString("man"))
+print(trie.insertString("mangesh"))
+print(trie.insertString("apple"))
+print(trie.insertString("app"))
+print("-----------------------------")
+deleteString(trie.root,"mango",0)
+print(trie.searchString("mango"))

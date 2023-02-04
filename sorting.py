@@ -48,6 +48,23 @@ def bucketSort(customList):
             
     return sortedList
 
+#6 Pivot sort
+# helper function for pivot sort
+def swap(lst,index1,index2):
+    lst[index1],lst[index2] = lst[index2],lst[index1]
+    return lst
+    
+def pivot(lst,pivotIndex,endIndex):
+    startIndex = pivotIndex
+    swapIndex = pivotIndex
+    for i in range(pivotIndex+1,endIndex+1):
+        if lst[i] < lst[pivotIndex]:
+            swapIndex += 1
+            lst = swap(lst,swapIndex,i)
+    lst = swap(lst,pivotIndex,swapIndex)
+    return swapIndex
+    
+
 
 lst = [4,5,3,2,7,9,1,6,8]
 print(bubbleSort(lst,"Descending"))

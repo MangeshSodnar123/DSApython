@@ -24,6 +24,30 @@ def selectionSort(lst):
         
     return lst
 
+def bucketSort(customList):
+    noOfBuckets = round(math.sqrt(len(customList)))
+    maxValue = max(customList)
+    arr = []
+    #create buckets
+    for i in range(noOfBuckets):
+        arr.append([])
+    #loop all elements
+    for j in customList:
+        #find bucket index for each element of a list
+        bucketIndex = math.ceil(j*noOfBuckets/maxValue)
+        #append that element in appropriate bucket
+        arr[bucketIndex-1].append(j)
+    #run a loop through all buckets and get them sorted using external sort function.
+    for k in range(noOfBuckets):
+        arr[k] = selectionSort(arr[k])
+    #run a loop for all elements and merge all buckets together.
+    sortedList = []
+    for i in range(noOfBuckets):
+        for j in range(len(arr[i])):
+            sortedList.append(arr[i][j])
+            
+    return sortedList
 
-lst = [4,5,3,2,7,9,1,6,8,0]
+
+lst = [4,5,3,2,7,9,1,6,8]
 print(bubbleSort(lst,"Descending"))

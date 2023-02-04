@@ -64,7 +64,18 @@ def pivot(lst,pivotIndex,endIndex):
     lst = swap(lst,pivotIndex,swapIndex)
     return swapIndex
     
-
-
-lst = [4,5,3,2,7,9,1,6,8]
-print(bubbleSort(lst,"Descending"))
+def quickSortHelper(lst,left,right):
+    if left < right:
+        pivotIndex = pivot(lst,left,right)
+        quickSortHelper(lst,left,pivotIndex-1)
+        quickSortHelper(lst,pivotIndex+1,right)
+    return lst
+    
+def quickSort(lst):
+    return quickSortHelper(lst,0,len(lst)-1)
+    
+    
+lst1 = [4,5,3,2,7,9,1,6,8,0]
+#print(bucketSort(lst1))
+print(quickSort(lst1))
+print(lst1)

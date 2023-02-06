@@ -25,10 +25,23 @@ class Graph:
             self.adjecencyList[vertex2].append(vertex1)
             return True
         return False
+        
+    #method to remove edge(vertex1,vertex2)->bool
+    def removeEdge(self,vertex1,vertex2):
+        #check if vertices are present in dict. if yes use .remove() method of the dict.
+        if vertex1 in self.adjecencyList.keys() and vertex2 in self.adjecencyList.keys():
+            self.adjecencyList[vertex1].remove(vertex2)
+            self.adjecencyList[vertex2].remove(vertex1)
+            return True
+        return False
+        
 graph = Graph()
 graph.addVertex('A')
 graph.addVertex('B')
 graph.addEdge('A','B')
+graph.printGraph()
+print("---------------------")
+graph.removeEdge('A','B')
 graph.printGraph()
         
         

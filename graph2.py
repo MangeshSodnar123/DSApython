@@ -38,6 +38,20 @@ class Graph:
             return True
         return False
         
+    #deleteVertex method(vertex)
+    def deleteVertex(self,vertex):
+        #check if vertex is present in dictionary.
+        if vertex in self.adjecencyList.keys():
+            #visit all elements from list of that vertex
+            for node in self.adjecencyList[vertex]:
+                #call removeEdge method to remove edges between those element and vertex.
+                if node in self.adjecencyList[vertex]:
+                    self.removeEdge(node,vertex)
+            #remove vertex from the keys of the dictionary.
+            self.adjecencyList.pop(vertex)
+            return True
+        return False
+        
 graph = Graph()
 graph.addVertex('A')
 graph.addVertex('B')
@@ -45,6 +59,7 @@ graph.addEdge('A','B')
 graph.printGraph()
 print("---------------------")
 graph.removeEdge('A','B')
+graph.deleteVertex('A')
 graph.printGraph()
         
         

@@ -30,8 +30,11 @@ class Graph:
     def removeEdge(self,vertex1,vertex2):
         #check if vertices are present in dict. if yes use .remove() method of the dict.
         if vertex1 in self.adjecencyList.keys() and vertex2 in self.adjecencyList.keys():
-            self.adjecencyList[vertex1].remove(vertex2)
-            self.adjecencyList[vertex2].remove(vertex1)
+            try:
+                self.adjecencyList[vertex1].remove(vertex2)
+                self.adjecencyList[vertex2].remove(vertex1)
+            except Exception:
+                pass
             return True
         return False
         

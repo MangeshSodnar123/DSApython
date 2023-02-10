@@ -29,8 +29,8 @@ class Dijkestra:
     #calculate function(startVertex);
     def calculate(self,startVertex):
         #push start vertex to heap
-        heapq.heappush(self.heap,startVertex)
         startVertex.minDistance = 0
+        heapq.heappush(self.heap,startVertex)
         #run a while loop till heap not become empty.
         while self.heap:
             #curVertex = heap pop vertex
@@ -59,9 +59,9 @@ class Dijkestra:
         #curVertex = endVertex
         curVertex = endVertex
         #print(minDistancd ov endVertex)
-        print(f'the minimum distance from {self} to {endVertex} is {endVertex.minDistance}')
+        print(f'the minimum distance is {endVertex.minDistance}')
         #run a while loop to print path
-        while curVertex:
+        while (curVertex is not None):
             #curVertex = curVertex.predesessor to go back 
             print(curVertex.name, end=" ")
             curVertex = curVertex.predecessor
@@ -97,3 +97,6 @@ nodeF.addEdge(nodeG,12)
 
 nodeH.addEdge(nodeG,14)
 
+dj = Dijkestra()
+dj.calculate(nodeA)
+dj.getShortestPath(nodeG)

@@ -63,10 +63,32 @@ class Graph:
         #append to edges list
         self.graph.append([start,destination,weight])
     #add Print method
-    def printGraph(self):
+    def printGraph(self,graph):
         #run a loop for all the edges in the graph and print them all
-        for start,destination,weight in self.graph:
-            print(f'{start} -> {destination} : {weight})
+        for start,destination,weight in graph:
+            print(f'{start} -> {destination} : {weight}')
             
-#declare a 
-    
+#declare a Kruskal function
+    def kruskal(self):
+        index = 0
+        i = 0
+    #take a list of edges as a input
+    #sort that list based on the weight of edges ascending
+        self.graph = sorted(self.graph,key=lambda item:item[2])
+    #declare empty list to store the end result edges
+    #run a loop to visit all edges from the sorted list.
+        while index<self.V-1:
+            #check if parent of the start and end are not same:
+            s,d,w = self.graph[i]
+            i += 1
+            par1 = DisjointSet.find(s)
+            par2 = DisjointSet.find(d)
+            
+            if par1 != par2:
+                self.MST.append([s,d,w])
+                DisjointSet.union(par1,par2)
+                #if not same then append this pair in answer list
+                #make union of the parents in the original list.
+        #print the answer list
+        self.printGraph(self.MST)
+        

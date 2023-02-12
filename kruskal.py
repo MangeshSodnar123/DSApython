@@ -53,6 +53,7 @@ class Graph:
         self.V = vertices
         self.nodes = []
         self.graph = []
+        self.MST = []
     #add addNode method(node)
     def addNode(self,node):
         #append to the nodes list
@@ -72,6 +73,7 @@ class Graph:
     def kruskal(self):
         index = 0
         i = 0
+        ds = DisjointSet(self.nodes)
     #take a list of edges as a input
     #sort that list based on the weight of edges ascending
         self.graph = sorted(self.graph,key=lambda item:item[2])
@@ -81,14 +83,37 @@ class Graph:
             #check if parent of the start and end are not same:
             s,d,w = self.graph[i]
             i += 1
-            par1 = DisjointSet.find(s)
-            par2 = DisjointSet.find(d)
+            par1 = ds.find(s)
+            par2 = ds.find(d)
             
             if par1 != par2:
                 self.MST.append([s,d,w])
-                DisjointSet.union(par1,par2)
+                ds.union(par1,par2)
+                index += 1
                 #if not same then append this pair in answer list
                 #make union of the parents in the original list.
         #print the answer list
         self.printGraph(self.MST)
         
+g = Graph(5)
+g.addNode("A")
+g.addNode("B")
+g.addNode("C")
+g.addNode("D")
+g.addNode("E")
+g.addEdge("A", "B", 5)
+g.addEdge("A", "C", 13)
+g.addEdge("A", "E", 15)
+g.addEdge("B", "A", 5)
+g.addEdge("B", "C", 10)
+g.addEdge("B", "D", 8)
+g.addEdge("C", "A", 13)
+g.addEdge("C", "B", 10)
+g.addEdge("C", "E", 20)
+g.addEdge("C", "D", 6)
+g.addEdge("D", "B", 8)
+g.addEdge("D", "C", 6)
+g.addEdge("E", "A", 15)
+g.addEdge("E", "C", 20)
+
+g.kruskal()

@@ -66,7 +66,20 @@
 #     maxi = 
 
 
-##quickSort algorithm
-
+# ##quickSort algorithm
+# def quickSort(arr):
+#     #base condition
+#     if(len(arr)<2): #[],[1]
+#         return arr
+#     else:
+#         pivot = arr[0]
+#         smallers = [i for i in arr[1:] if i<=pivot]
+#         greaters = [i for i in arr[1:] if i>pivot]
+#     #recursive condition
+#         return quickSort(smallers)+[pivot]+quickSort(greaters)
 
     
+# arr = [5,3,6,71,2,8,9,33,4,6,22,0,8]
+# arr1 = []
+# arr2 = [7]
+# print(quickSort(arr2))

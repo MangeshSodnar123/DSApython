@@ -1,4 +1,5 @@
 def selectionSort(arr):
+    '''Time complexity is O(nxn), Because we need to visit all array elements to find one greatest element. And this need to be done for all n elements.'''
     sortedArr = []
     for i in range(len(arr)):
         smallestInd = findSmallest(arr)
